@@ -139,22 +139,30 @@ function confirmDelete(){
 function closeConfirm(){confirmModal.style.display='none'}
 
 function resetTicket(){cart=[]; render()}
-function printTicket(){window.print()}
-function previewWhatsApp(){
-  const t=encodeURIComponent(cart.map(c=>`${c.name} - ${c.qty} ${c.unit}`).join('\n'));
-  window.open('https://wa.me/?text='+t)
+
+/* ===== IMPRESIÓN TICKET 80MM ===== */
+function printTicket(){
+  const cont=document.getElementById("ticket-items");
+  cont.innerHTML="";
+
+  cart.forEach(c=>{
+    cont.innerHTML+=`
+      <div class="ticket-line">
+        <span>${c.name}</span>
+        <span>${c.qty} ${c.unit}</span>
+      </div>
+    `;
+  });
+
+  document.getElementById("ticket-fecha").textContent=
+    new Date().toLocaleString();
+
+  document.getElementById("ticket-total").textContent=cart.length;
+
+  window.print();
 }
 
-if(items.length===0){
-  items=[
-    {name:'Coca Cola',cat:'Aguas y refrescos'},
-    {name:'Manzana',cat:'Frutas y verduras'}
-  ];
-}
-
-render();
-
-
+/* ===== WHATSAPP ===== */
 function buildWhatsAppText(){
   let txt="🧾 *PEDIDO*\n\n";
   categories.forEach(cat=>{
@@ -196,3 +204,13 @@ function previewWhatsApp(){
 }
 
 function sendWhatsApp(){ previewWhatsApp(); }
+
+/* ===== DATOS INICIALES ===== */
+if(items.length===0){
+  items=[
+    {name:'Coca Cola',cat:'Aguas y refrescos'},
+    {name:'Manzana',cat:'Frutas y verduras'}
+  ];
+}
+
+render();
