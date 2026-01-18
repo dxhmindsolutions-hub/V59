@@ -27,7 +27,7 @@ h1{margin:0;font-size:20px}
   background:#e5e5ea
 }
 
-/* ===== DRAWER CATEGORÍAS ===== */
+/* ===== DRAWER ===== */
 #drawer{
   position:fixed;
   top:0;bottom:0;left:0;
@@ -72,7 +72,7 @@ main{padding:12px;padding-bottom:260px}
 .add{background:#007aff;color:#fff}
 .del{background:#ff3b30;color:#fff}
 
-/* ===== TICKET VISIBLE ===== */
+/* ===== TICKET ===== */
 #ticket-panel{
   position:fixed;
   bottom:20px;
@@ -156,21 +156,20 @@ main{padding:12px;padding-bottom:260px}
   font-weight:600
 }
 
-/* ===== SELECCIÓN ACTIVA ===== */
+/* ===== ACTIVO ===== */
 .btns button.active{
   background:#000;
   color:#fff
 }
 
 /* ===== BOTONES MODAL ===== */
-.modal #cancel{
-  flex:1;
-  padding:12px;
-  border-radius:12px;
-  border:1px solid #000;
-  background:#fff;
-  font-weight:600
+.modal .box > div:last-child{
+  display:flex;
+  gap:8px;
+  margin-top:16px
 }
+
+/* ACEPTAR (IZQUIERDA) */
 .modal #add{
   flex:1;
   padding:12px;
@@ -180,13 +179,19 @@ main{padding:12px;padding-bottom:260px}
   color:#fff;
   font-weight:600
 }
-.modal .box > div:last-child{
-  display:flex;
-  gap:8px;
-  margin-top:16px
+
+/* CANCELAR (DERECHA, ROJO OJO) */
+.modal #cancel{
+  flex:1;
+  padding:12px;
+  border-radius:12px;
+  border:none;
+  background:#ff3b30;
+  color:#fff;
+  font-weight:600
 }
 
-/* ===== TICKET IMPRESIÓN 80MM ===== */
+/* ===== TICKET IMPRESIÓN ===== */
 #print-ticket{
   display:none;
   font-family:monospace
@@ -234,7 +239,6 @@ main{padding:12px;padding-bottom:260px}
 
 <main id="list"></main>
 
-<!-- TICKET VISIBLE -->
 <div id="ticket-panel">
   <strong>🧾 Ticket</strong>
   <ul id="ticketList"></ul>
@@ -245,7 +249,6 @@ main{padding:12px;padding-bottom:260px}
   </div>
 </div>
 
-<!-- MODAL CONFIRMACIÓN -->
 <div id="confirmModal" class="modal">
   <div class="box">
     <p id="confirmText"></p>
@@ -254,7 +257,6 @@ main{padding:12px;padding-bottom:260px}
   </div>
 </div>
 
-<!-- TICKET SOLO IMPRESIÓN -->
 <div id="print-ticket">
   <h2>[PEDIDO]</h2>
   <p>Fecha: <span id="ticket-fecha"></span></p>
