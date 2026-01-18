@@ -167,12 +167,12 @@ main{padding:12px;padding-bottom:260px}
   display:flex;
   gap:8px;
   margin-top:16px;
-  flex-direction:row-reverse; /* ACEPTAR IZQ / CANCELAR DER */
 }
 
-/* ===== ACEPTAR / GUARDAR ===== */
+/* ===== ACEPTAR / AÑADIR / GUARDAR ===== */
 .modal #add,
-.modal #save{
+.modal #save,
+.modal #send{
   flex:1;
   padding:12px;
   border-radius:12px;
@@ -191,6 +191,13 @@ main{padding:12px;padding-bottom:260px}
   background:#ff3b30;
   color:#fff;
   font-weight:600
+}
+
+/* ===== WHATSAPP (MISMO TAMAÑO) ===== */
+.modal textarea + div{
+  display:flex;
+  gap:8px;
+  margin-top:16px;
 }
 
 /* ===== EFECTO PULSADO ===== */
