@@ -90,10 +90,11 @@ function showQtyModal(name){
       <button>KG</button>
       <button>CAJA</button>
     </div>
-    <div style="display:flex;gap:8px;margin-top:10px">
-      <button id="cancel">Cancelar</button>
-      <button id="add">Añadir</button>
-    </div>
+   <div style="display:flex;gap:8px;margin-top:10px">
+  <button id="add">Añadir</button>
+  <button id="cancel">Cancelar</button>
+</div>
+
   </div>`;
   document.body.appendChild(m);
 
