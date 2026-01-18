@@ -4,8 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Despensa</title>
+
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#4CAF50">
+
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:-apple-system;background:#f2f2f7}
@@ -24,17 +26,65 @@ main{padding:12px;padding-bottom:260px}
 .item button{border:none;border-radius:8px;padding:6px 10px}
 .add{background:#007aff;color:#fff}
 .del{background:#ff3b30;color:#fff}
-#ticket{position:fixed;bottom:20px;left:12px;right:12px;background:#fff;border-radius:14px;padding:12px}
-#ticket ul{list-style:none;padding:0;margin:0}
-#ticket li{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+
+/* Ticket visible en pantalla */
+#ticket-panel{
+  position:fixed;
+  bottom:20px;
+  left:12px;
+  right:12px;
+  background:#fff;
+  border-radius:14px;
+  padding:12px;
+}
+#ticket-panel ul{list-style:none;padding:0;margin:0}
+#ticket-panel li{display:flex;justify-content:space-between;margin-bottom:4px}
 .ticket-actions{display:flex;gap:8px;margin-top:8px}
 .ticket-actions button{flex:1;border:none;border-radius:10px;padding:12px;font-weight:600}
+
+/* Modal */
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;align-items:center;justify-content:center;z-index:30}
 .modal .box{background:#fff;padding:16px;border-radius:12px;width:90%}
-.btns{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
-.btns button.active{background:#4caf50;color:#fff}
+
+/* ===== TICKET DE IMPRESIÓN ===== */
+#print-ticket{
+  display:none;
+  font-family:monospace;
+}
+
+@media print{
+  body *{display:none !important}
+
+  #print-ticket,
+  #print-ticket *{
+    display:block !important;
+  }
+
+  #print-ticket{
+    width:80mm;
+    margin:0;
+    padding:0;
+    font-size:12px;
+  }
+
+  #print-ticket h2{
+    text-align:center;
+    font-size:14px;
+  }
+
+  .ticket-line{
+    display:flex;
+    justify-content:space-between;
+  }
+
+  .gracias{
+    text-align:center;
+    margin-top:10px;
+  }
+}
 </style>
 </head>
+
 <body>
 
 <div id="drawer"></div>
@@ -52,7 +102,8 @@ main{padding:12px;padding-bottom:260px}
 
 <main id="list"></main>
 
-<div id="ticket">
+<!-- TICKET VISIBLE -->
+<div id="ticket-panel">
   <strong>🧾 Ticket</strong>
   <ul id="ticketList"></ul>
   <div class="ticket-actions">
@@ -62,6 +113,7 @@ main{padding:12px;padding-bottom:260px}
   </div>
 </div>
 
+<!-- MODAL -->
 <div id="confirmModal" class="modal">
   <div class="box">
     <p id="confirmText"></p>
@@ -70,19 +122,17 @@ main{padding:12px;padding-bottom:260px}
   </div>
 </div>
 
-<script src="app.js"></script>
-  <!-- TICKET DE IMPRESIÓN -->
-<div id="ticket">
+<!-- ===== TICKET SOLO PARA IMPRESIÓN ===== -->
+<div id="print-ticket">
   <h2>DESPENSA</h2>
   <p>Fecha: <span id="ticket-fecha"></span></p>
   <hr>
-
   <div id="ticket-items"></div>
-
   <hr>
   <p>Total productos: <span id="ticket-total"></span></p>
   <p class="gracias">Gracias por su compra</p>
 </div>
 
+<script src="app.js"></script>
 </body>
 </html>
