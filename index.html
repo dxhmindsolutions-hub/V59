@@ -162,25 +162,27 @@ main{padding:12px;padding-bottom:260px}
   color:#fff
 }
 
-/* ===== BOTONES MODAL ===== */
+/* ===== BOTONES MODAL (ORDEN) ===== */
 .modal .box > div:last-child{
   display:flex;
   gap:8px;
-  margin-top:16px
+  margin-top:16px;
+  flex-direction:row-reverse; /* ACEPTAR IZQ / CANCELAR DER */
 }
 
-/* ACEPTAR (IZQUIERDA) */
-.modal #add{
+/* ===== ACEPTAR / GUARDAR ===== */
+.modal #add,
+.modal #save{
   flex:1;
   padding:12px;
   border-radius:12px;
   border:none;
-  background:#43a047; /* VERDE AÑADIR */
+  background:#43a047;
   color:#fff;
   font-weight:600
 }
 
-/* CANCELAR (DERECHA, ROJO OJO) */
+/* ===== CANCELAR ===== */
 .modal #cancel{
   flex:1;
   padding:12px;
@@ -189,6 +191,11 @@ main{padding:12px;padding-bottom:260px}
   background:#ff3b30;
   color:#fff;
   font-weight:600
+}
+
+/* ===== EFECTO PULSADO ===== */
+.modal button:active{
+  transform:scale(0.97);
 }
 
 /* ===== TICKET IMPRESIÓN ===== */
@@ -252,8 +259,10 @@ main{padding:12px;padding-bottom:260px}
 <div id="confirmModal" class="modal">
   <div class="box">
     <p id="confirmText"></p>
-    <button onclick="closeConfirm()">Cancelar</button>
-    <button onclick="confirmDelete()">Eliminar</button>
+    <div>
+      <button onclick="confirmDelete()">Aceptar</button>
+      <button onclick="closeConfirm()">Cancelar</button>
+    </div>
   </div>
 </div>
 
