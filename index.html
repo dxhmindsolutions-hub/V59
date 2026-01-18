@@ -69,7 +69,13 @@ main{padding:12px;padding-bottom:260px}
   border-radius:8px;
   padding:6px 10px
 }
-/* BOTONES LISTA (MISMO TAMAÑO) */
+/* CONTENEDOR DE BOTONES EN LA LISTA ARTICULOS */
+.item > div{
+  display:flex;
+  gap:8px;
+}
+
+/* BOTONES IGUALES */
 .item button{
   width:36px;
   height:36px;
@@ -92,6 +98,12 @@ main{padding:12px;padding-bottom:260px}
 .del{
   background:#ff3b30;
   color:#fff;
+}
+
+/* EFECTO PULSADO */
+.item button:active{
+  transform:scale(0.9);
+  opacity:0.85;
 }
 
 
